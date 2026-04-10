@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harish Kumar S — Mechanical Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --paper: #f5f0e8;
+    --steel: #2b4162;
+    --accent: #e8460a;
+    --mid: #8a8070;
+    --line: rgba(13,13,13,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.5;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    padding: 60px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid var(--line);
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-right {
+    padding: 60px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    background: var(--steel);
+    overflow: hidden;
+  }
+
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 420px; height: 420px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+  .hero-right::after {
+    content: '';
+    position: absolute;
+    top: 60px; right: 60px;
+    width: 280px; height: 280px;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 10vw, 148px);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    animation: slideUp 0.9s cubic-bezier(0.16,1,0.3,1) both;
+  }
+
+  .hero-name span {
+    display: block;
+    color: var(--accent);
+  }
+
+  .hero-discipline {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-top: 20px;
+  }
+
+  .hero-contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero-contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--mid);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .hero-contact-list li span.dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .hero-tagline {
+    color: rgba(255,255,255,0.55);
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 360px;
+    position: relative; z-index: 1;
+    margin-bottom: 40px;
+  }
+
+  .hero-tagline strong {
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .hero-big-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 120px;
+    line-height: 1;
+    color: rgba(255,255,255,0.06);
+    position: absolute;
+    bottom: -20px; left: 40px;
+    letter-spacing: 0.02em;
+    user-select: none;
+  }
+
+  .scroll-hint {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-top: 40px;
+  }
+
+  .scroll-hint::before {
+    content: '';
+    display: block;
+    width: 40px; height: 1px;
+    background: var(--mid);
+  }
+
+  /* ── SECTION WRAPPER ── */
+  section {
+    padding: 100px 56px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 60px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+    max-width: 120px;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .about-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    line-height: 0.9;
+    color: var(--ink);
+  }
+
+  .about-body {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #3a3530;
+    border-left: 3px solid var(--accent);
+    padding-left: 28px;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    cursor: default;
+    transition: background 0.3s;
+  }
+
+  .exp-item:hover {
+    background: rgba(232,70,10,0.03);
+  }
+
+  .exp-item:first-child { border-top: 1px solid var(--line); }
+
+  .exp-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .exp-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--mid);
+  }
+
+  .exp-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(232,70,10,0.08);
+    padding: 3px 8px;
+    display: inline-block;
+    width: fit-content;
+  }
+
+  .exp-content h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .exp-content p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #4a4540;
+  }
+
+  .exp-content ul {
+    list-style: none;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .exp-content ul li {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4a4540;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .exp-content ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 12px;
+  }
+
+  /* ── SKILLS ── */
+  .skills-section {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .skills-section .section-label {
+    color: rgba(232,70,10,0.9);
+  }
+
+  .skills-section .section-label::after {
+    background: rgba(255,255,255,0.1);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .skill-card {
+    background: rgba(255,255,255,0.04);
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: background 0.3s;
+  }
+
+  .skill-card:hover {
+    background: rgba(255,255,255,0.08);
+  }
+
+  .skill-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: rgba(232,70,10,0.4);
+    line-height: 1;
+  }
+
+  .skill-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.04em;
+    color: #fff;
+  }
+
+  .skill-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .edu-card {
+    background: #fff;
+    padding: 48px 40px;
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+
+  .edu-card:hover { transform: translateY(-4px); }
+
+  .edu-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  .edu-card:hover::after { transform: scaleX(1); }
+
+  .edu-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--mid);
+    margin-bottom: 12px;
+  }
+
+  .edu-degree {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .edu-school {
+    font-size: 13px;
+    color: var(--mid);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .edu-detail {
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* ── LANGUAGES + CERT ── */
+  .bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .bottom-cell {
+    padding: 80px 56px;
+    border-right: 1px solid var(--line);
+  }
+
+  .bottom-cell:last-child { border-right: none; }
+
+  .lang-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .lang-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .lang-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--ink);
+  }
+
+  .lang-level {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  .cert-card {
+    margin-top: 8px;
+    background: var(--steel);
+    color: #fff;
+    padding: 40px;
+    display: inline-block;
+  }
+
+  .cert-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px;
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+  }
+
+  .cert-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-top: 12px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 48px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--line);
+  }
+
+  footer .foot-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    color: var(--ink);
+  }
+
+  footer .foot-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--mid);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { padding: 60px 40px; min-height: 280px; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .bottom-grid { grid-template-columns: 1fr; }
+    .bottom-cell { border-right: none; border-bottom: 1px solid var(--line); padding: 60px 32px; }
+    section { padding: 70px 32px; }
+    .exp-item { grid-template-columns: 1fr; gap: 12px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  @media (max-width: 560px) {
+    .hero-left { padding: 40px 28px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    section { padding: 60px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-left">
+    <div>
+      <p class="hero-tag">Portfolio — Mechanical Engineering</p>
+    </div>
+    <div>
+      <h1 class="hero-name">Harish<span>Kumar S</span></h1>
+      <p class="hero-discipline">CAD · Design · Manufacturing</p>
+    </div>
+    <div>
+      <ul class="hero-contact-list">
+        <li><span class="dot"></span>8667044117</li>
+        <li><span class="dot"></span>hari245633@gmail.com</li>
+        <li><span class="dot"></span>Chennai, Tamilnadu</li>
+      </ul>
+      <p class="scroll-hint">scroll to explore</p>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-big-label">ME</div>
+    <p class="hero-tagline">
+      <strong>Third-year Mechanical Engineering student</strong> at CEG Anna University — driven by a passion for <strong>CAD design</strong>, simulation, and research-driven innovation.
+    </p>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section>
+  <p class="section-label">About Me</p>
+  <div class="about-grid reveal">
+    <h2 class="about-heading">Who I Am</h2>
+    <p class="about-body">
+      A highly motivated Mechanical Engineering student with a strong interest in CAD design and research-driven innovation. Proficient in tools such as SolidWorks with practical experience in MS Software and DIY Projects. Committed to continuous learning and skill development in core mechanical domains, with a strong foundation in simulation, design optimization, and product development.
+    </p>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section>
+  <p class="section-label">Experience</p>
+  <div class="exp-list">
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-date">09/2024 — 01/2025</span>
+        <span class="exp-type">Student Project</span>
+      </div>
+      <div class="exp-content">
+        <h3>Window Water Cooler</h3>
+        <p>CEG Anna University — Individual Project</p>
+        <ul>
+          <li>Design of prototype of window attached water cooler with use of honey combed patterned choir material</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-date">06/2024 — 09/2024</span>
+        <span class="exp-type">Student Project</span>
+      </div>
+      <div class="exp-content">
+        <h3>Gear Box Washing Machine</h3>
+        <p>CEG Anna University — Hostel Facility</p>
+        <ul>
+          <li>Designed and developed a prototype with custom gear box attached washing machine for hostel facility</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-date">05/2024 — 06/2024</span>
+        <span class="exp-type">Implant Training</span>
+      </div>
+      <div class="exp-content">
+        <h3>TITAN — Hosur</h3>
+        <p>Industrial Internship at TITAN Company</p>
+        <ul>
+          <li>Gained hands-on experience in precision manufacturing, process optimization, and documentation</li>
+          <li>Collaborated with engineers on efficiency improvements, enhancing both technical and teamwork skills</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section">
+  <p class="section-label">Skills</p>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-num">01</div>
+      <div class="skill-name">CAD CAM</div>
+      <div class="skill-desc">SolidWorks, design modeling & simulation</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-num">02</div>
+      <div class="skill-name">Leadership</div>
+      <div class="skill-desc">Team coordination & project management</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-num">03</div>
+      <div class="skill-name">Python</div>
+      <div class="skill-desc">Scripting, automation & data analysis</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-num">04</div>
+      <div class="skill-name">Microsoft</div>
+      <div class="skill-desc">Office suite, documentation & reporting</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section>
+  <p class="section-label">Education</p>
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <p class="edu-year">2023 — 2027</p>
+      <h3 class="edu-degree">BE Mechanical Engineering</h3>
+      <p class="edu-school">CEG Anna University</p>
+      <p class="edu-detail">Currently pursuing — Tamilnadu Mode</p>
+    </div>
+    <div class="edu-card reveal">
+      <p class="edu-year">2021 — 2023</p>
+      <h3 class="edu-degree">Higher Secondary Certificate</h3>
+      <p class="edu-school">Sai Guruji School</p>
+      <p class="edu-detail">561 / 600</p>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGES + CERTIFICATIONS -->
+<div class="bottom-grid" style="border-bottom: 1px solid var(--line);">
+  <div class="bottom-cell">
+    <p class="section-label">Languages</p>
+    <div class="lang-list">
+      <div class="lang-item reveal">
+        <span class="lang-name">English</span>
+        <span class="lang-level">Fluent</span>
+      </div>
+      <div class="lang-item reveal">
+        <span class="lang-name">Tamil</span>
+        <span class="lang-level">Fluent</span>
+      </div>
+      <div class="lang-item reveal">
+        <span class="lang-name">Hindi</span>
+        <span class="lang-level">Basic</span>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-cell">
+    <p class="section-label">Certifications</p>
+    <div class="cert-card reveal">
+      <div class="cert-title">Drop&shy;shipping Entre&shy;preneur</div>
+      <div class="cert-sub">Certified — Business & Commerce</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="foot-name">Harish Kumar S</span>
+  <span class="foot-copy">Mechanical Engineering · Chennai · 2025</span>
+</footer>
+
+<script>
+  // Intersection observer for reveal animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = (Array.from(entry.target.parentElement.children).indexOf(entry.target) * 0.08) + 's';
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
